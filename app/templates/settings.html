@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}LinguaFlow — Paramètres{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Paramètres</h1>
+
+    <h2>Moteur de traduction</h2>
+    <table id="enginesTable">
+        <thead><tr><th>Moteur</th><th>Mode</th><th>Disponible</th><th>Description</th></tr></thead>
+        <tbody>
+        {% for e in engines %}
+            <tr>
+                <td>{{ e.name }}</td>
+                <td><span class="badge {{ 'local' if e.mode == 'local' else 'remote' }}">{{ e.mode }}</span></td>
+                <td>{{ 'Oui' if e.available else 'Non' }}</td>
+                <td class="hint">{{ e.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <form id="settingsForm">
+        <label>Langue cible par défaut
+            <select name="default_target_lang" id="s_target">
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+            </select>
+        </label>
+        <label class="checkbox"><input type="checkbox" id="s_correction"> Activer la correction linguistique par défaut</label>
+        <label class="checkbox"><input type="checkbox" id="s_ocr"> Activer l'OCR (Tesseract) pour images et PDF scannés</label>
+
+        <h2>Moteur distant (facultatif)</h2>
+        <p class="hint">Désactivé par défaut. Aucun document n'est transmis sans consentement explicite.</p>
+        <label class="checkbox"><input type="checkbox" id="s_remote_enabled"> Activer les moteurs distants</label>
+        <label>URL du service (ex. http://127.0.0.1:5000)
+            <input type="text" id="s_remote_endpoint" placeholder="http://..." >
+        </label>
+        <label>Clé API (facultative, non affichée ensuite)
+            <input type="password" id="s_remote_api_key" placeholder="••••••">
+        </label>
+        <button type="submit">Enregistrer</button>
+        <span id="settingsSaved" class="hint"></span>
+    </form>
+</section>
+{% endblock %}

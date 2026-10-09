@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LinguaFlow{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <a href="/">LinguaFlow</a>
+        <span class="tagline">Traduction documentaire locale</span>
+    </div>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/history">Historique</a>
+        <a href="/glossary">Glossaires</a>
+        <a href="/settings">Paramètres</a>
+    </nav>
+</header>
+<main class="container">
+{% block content %}{% endblock %}
+</main>
+<footer class="footer">
+    <p>LinguaFlow — Confidentialité locale. Aucun transfert de document sans consentement explicite.</p>
+    <p>Serveur limité à l'interface locale (127.0.0.1).</p>
+</footer>
+<script src="/static/js/app.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

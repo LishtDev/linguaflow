@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}LinguaFlow — Accueil{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Traduire un document vers le français</h1>
+    <p class="hint">Traduction locale par défaut. Aucun fichier n'est envoyé à un service distant sans votre consentement.</p>
+
+    <form id="uploadForm">
+        <div class="drop-zone" id="dropZone">
+            <input type="file" id="fileInput" name="file" hidden>
+            <p class="drop-icon">⤓</p>
+            <p><strong>Déposez un fichier ici</strong> ou</p>
+            <button type="button" id="browseBtn">Importer un fichier</button>
+            <p class="hint" id="fileName">Aucun fichier sélectionné</p>
+        </div>
+
+        <div class="grid">
+            <label>Langue source
+                <select name="source_lang" id="sourceLang">
+                    <option value="">Détection automatique</option>
+                    <option value="en">Anglais</option>
+                    <option value="es">Espagnol</option>
+                    <option value="de">Allemand</option>
+                    <option value="it">Italien</option>
+                    <option value="pt">Portugais</option>
+                    <option value="ru">Russe</option>
+                    <option value="zh-cn">Chinois</option>
+                </select>
+            </label>
+            <label>Langue cible
+                <select name="target_lang" id="targetLang">
+                    <option value="fr" selected>Français</option>
+                    <option value="en">Anglais</option>
+                    <option value="es">Espagnol</option>
+                </select>
+            </label>
+            <label>Moteur
+                <select name="engine" id="engineSelect">
+                    {% for e in engines %}
+                    <option value="{{ e.id }}" {% if e.mode == 'remote' and not e.enabled %}disabled{% endif %}>
+                        {{ e.name }} ({{ 'local' if e.mode == 'local' else 'distant' }})
+                        {% if not e.available %} — indisponible{% endif %}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label class="checkbox"><input type="checkbox" name="correction" id="correction"> Correction linguistique après traduction</label>
+        </div>
+
+        <div class="badges">
+            <span class="badge local">Mode local : aucun transfert réseau</span>
+        </div>
+
+        <button type="submit" id="submitBtn">Importer et traduire</button>
+    </form>
+    <p class="hint">Formats pris en charge : {{ formats|join(", ") }}</p>
+</section>
+
+<div id="uploadResult" class="card result hidden"></div>
+{% endblock %}

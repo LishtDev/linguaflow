@@ -1,0 +1,5 @@
+Hello world.
+
+This tool uses cloud computing and machine learning to translate files.
+
+Contact admin@example.com or visit https://example.com for the ballpark.

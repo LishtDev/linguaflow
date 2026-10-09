@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}LinguaFlow — Historique{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Historique</h1>
+    <p class="hint">Les contenus complets ne sont pas conservés : uniquement les métadonnées et l'état des tâches.</p>
+    <div class="inline">
+        <button id="refreshBtn" class="secondary">Rafraîchir</button>
+        <button id="clearHistoryBtn" class="danger">Effacer tout l'historique</button>
+    </div>
+    <table>
+        <thead>
+            <tr><th>Fichier</th><th>Format</th><th>Langues</th><th>Moteur</th>
+                <th>État</th><th>Progression</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="historyBody"><tr><td colspan="7" class="hint">Chargement…</td></tr></tbody>
+    </table>
+</section>
+{% endblock %}

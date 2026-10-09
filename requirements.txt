@@ -1,0 +1,44 @@
+# LinguaFlow — dépendances Python
+# Versions vérifiées sur Python 3.12 / Linux Mint.
+# Installation : python3 -m pip install -r requirements.txt
+
+# — Cadre web —
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.32
+jinja2>=3.1
+python-multipart>=0.0.17
+httpx>=0.27
+
+# — Configuration / validation —
+pydantic>=2.9
+pydantic-settings>=2.6
+
+# — Base de données —
+SQLAlchemy>=2.0
+
+# — Traduction locale (par défaut) —
+argostranslate>=1.9
+ctranslate2>=4.5
+
+# — Traitement des documents —
+python-docx>=1.1
+python-pptx>=1.0
+openpyxl>=3.1
+PyMuPDF>=1.24
+EbookLib>=0.18
+
+# — Traitement du texte —
+langdetect>=1.0.9
+
+# — Utilitaires —
+aiofiles>=24.1
+
+# — OCR (optionnel) —
+# Nécessite aussi le paquet système : sudo apt install tesseract-ocr tesseract-ocr-fra tesseract-ocr-eng
+# L'application fonctionne sans : les images/PDF scannés renvoient une erreur claire.
+pytesseract>=0.3.10
+Pillow>=10.0
+
+# — Tests —
+pytest>=8.0
+pytest-asyncio>=0.24

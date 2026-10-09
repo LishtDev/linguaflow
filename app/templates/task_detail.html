@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}LinguaFlow — Tâche{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Suivi de la traduction</h1>
+    <p><strong>État :</strong> <span id="taskStatus" class="status-pending">chargement…</span></p>
+    <div class="progress"><div id="progressBar" class="bar"></div></div>
+    <p id="progressMessage" class="hint">En attente…</p>
+
+    <div id="errorBox" class="error-box hidden"></div>
+    <div id="warningBox" class="warning-box hidden"></div>
+
+    <div class="inline">
+        <a id="downloadLink" class="button hidden" href="#">Télécharger le résultat</a>
+        <button id="resumeButton" class="secondary hidden">Reprendre la tâche</button>
+    </div>
+
+    <h2>Aperçu des segments</h2>
+    <table>
+        <thead><tr><th>#</th><th>Texte source</th><th>Traduction</th></tr></thead>
+        <tbody id="nextSegments"><tr><td colspan="3" class="hint">Chargement…</td></tr></tbody>
+    </table>
+</section>
+
+<div class="card">
+    <h2>Moteur et confidentialité</h2>
+    <p class="hint">Le moteur utilisé est indiqué dans l'historique. En mode local, aucun transfert réseau n'a lieu pendant la traduction.</p>
+</div>
+{% endblock %}
